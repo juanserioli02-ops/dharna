@@ -1,0 +1,85 @@
+/* ============================================================
+   DHARMA — Planificador (grilla tipo planilla)
+   ============================================================ */
+.plan-main { max-width: none; }
+.plan-cab { align-items: flex-start; }
+.plan-sub { max-width: 780px; font-size: 14px; line-height: 1.5; color: var(--ink-2); margin: 6px 0 0; }
+.plan-sub em { font-style: italic; color: var(--ink); }
+
+/* tableros (tabs) */
+.plan-tableros { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 8px 0 14px; }
+.plan-tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.plan-tab { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.012em; text-transform: none; color: var(--ink-2); background: var(--panel); border: 1px solid var(--linea); border-radius: 999px; padding: 8px 16px; transition: all 0.12s; white-space: nowrap; }
+.plan-tab:hover { border-color: var(--acento); color: var(--ink); }
+.plan-tab.activo { background: var(--blanco); color: var(--acento); border-color: var(--acento); }
+.plan-tab.nuevo { color: var(--acento); border-style: dashed; }
+.plan-tab.archivo { color: var(--ink-3); border-style: dashed; }
+.plan-tab.archivo.activo { background: var(--ink-3); color: #fff; border-color: var(--ink-3); }
+.plan-tablero-acc { display: flex; gap: 8px; }
+.plan-mini { font-size: 12.5px; color: var(--ink-2); background: none; border: 1px solid var(--linea); border-radius: var(--radio); padding: 7px 12px; }
+.plan-mini:hover { border-color: var(--acento); color: var(--ink); }
+.plan-mini.archivar:hover { border-color: var(--teal); color: var(--teal); }
+/* eliminar es destructivo: menos prominente que renombrar/archivar, y separado con un margen */
+.plan-mini.borrar { color: var(--ink-3); border-style: dashed; margin-left: 6px; }
+.plan-mini.borrar:hover { border-color: var(--rojo, #C0392B); color: var(--rojo, #C0392B); border-style: solid; }
+
+/* lista de tableros archivados ("producción": Semana 1, Semana 2…) */
+.plan-archivados { display: flex; flex-direction: column; gap: 6px; margin: -6px 0 14px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--linea); border-radius: var(--radio); }
+.plan-archivado-fila { display: flex; align-items: center; gap: 12px; padding: 6px 0; border-top: 1px solid var(--linea); }
+.plan-archivado-fila:first-child { border-top: none; }
+.plan-archivado-etq { font-family: var(--font-display); font-weight: 700; font-size: 13.5px; color: var(--ink); flex: 1; }
+.plan-archivado-fecha { font-size: 12px; color: var(--ink-3); }
+
+/* scroll horizontal de la grilla */
+.plan-scroll { overflow-x: auto; border: 1px solid var(--linea); border-radius: var(--radio); background: #fff; -webkit-overflow-scrolling: touch; }
+.plan-tabla { border-collapse: collapse; width: 100%; }
+
+/* fila del título del tablero: se quitó (redundante con la pestaña activa arriba) */
+
+/* encabezados de clase (columnas) */
+.plan-head th { position: sticky; top: 0; background: var(--panel); border-bottom: 1px solid var(--linea); vertical-align: top; }
+.plan-th-bloque { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.044em; text-transform: none; color: var(--ink-3); text-align: left; padding: 12px 14px; position: sticky; left: 0; z-index: 3; background: var(--panel); }
+.plan-th-clase { padding: 10px 12px; border-left: 1px solid var(--linea); text-align: left; }
+.plan-clase-nom { width: 100%; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); background: transparent; border: none; border-bottom: 2px solid transparent; padding: 2px 0; }
+.plan-clase-nom:focus { outline: none; border-bottom-color: var(--acento); }
+.plan-clase-meta { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.plan-clase-cuenta { font-size: 11.5px; color: var(--ink-3); font-weight: 600; }
+.plan-clase-warn { font-size: 11px; color: var(--naranja); font-weight: 700; }
+.plan-clase-x { margin-left: auto; font-size: 12px; color: var(--ink-3); background: none; border: none; padding: 2px 6px; border-radius: 6px; }
+.plan-clase-x:hover:not(:disabled) { color: #fff; background: var(--rojo, #C0392B); }
+.plan-clase-x:disabled { opacity: 0.3; }
+.plan-enviar-uno { margin-top: 8px; width: 100%; font-family: var(--font-display); font-weight: 700; font-size: 10.5px; letter-spacing: 0.019em; text-transform: none; color: var(--acento); background: none; border: 1px solid var(--acento); border-radius: var(--radio); padding: 6px; transition: all 0.12s; }
+.plan-enviar-uno:hover { background: var(--acento); color: #fff; }
+
+/* celdas de bloque (filas) */
+.plan-td-bloque { position: sticky; left: 0; z-index: 2; background: var(--panel); border-top: 1px solid var(--linea); border-right: 1px solid var(--linea); vertical-align: top; padding: 10px 12px; }
+.plan-bloque-nom { width: 100%; font-family: var(--font-display); font-weight: 600; font-size: 13.5px; color: var(--ink); background: transparent; border: none; border-bottom: 1px solid transparent; padding: 2px 0; }
+.plan-bloque-nom:focus { outline: none; border-bottom-color: var(--acento); }
+.plan-bloque-acc { display: flex; gap: 3px; margin-top: 6px; }
+.plan-bloque-acc button { font-size: 11px; color: var(--ink-3); background: #fff; border: 1px solid var(--linea); border-radius: 5px; width: 24px; height: 22px; }
+.plan-bloque-acc button:hover { border-color: var(--acento); color: var(--ink); }
+.plan-bloque-acc button.borrar:hover { border-color: var(--rojo, #C0392B); color: var(--rojo, #C0392B); }
+
+.plan-celda { border-top: 1px solid var(--linea); border-left: 1px solid var(--linea); vertical-align: top; padding: 4px; }
+.plan-celda.con-rep { background: rgba(232,77,35,0.05); }
+.plan-ta { width: 100%; min-height: 44px; resize: vertical; font-family: var(--font-ui); font-size: 13px; line-height: 1.5; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 6px 8px; }
+.plan-ta:hover { border-color: var(--linea); }
+.plan-ta:focus { outline: none; border-color: var(--acento); background: #fff; }
+.plan-rep-tags { display: flex; flex-wrap: wrap; gap: 4px; padding: 2px 6px 6px; }
+.plan-rep-tag { font-size: 10.5px; color: var(--naranja); background: rgba(232,77,35,0.1); border-radius: 5px; padding: 2px 6px; font-weight: 600; }
+
+/* pie de tabla: añadir fila/columna */
+.plan-tabla tfoot td { border-top: 1px solid var(--linea); padding: 8px; }
+.plan-add-bloque { position: sticky; left: 0; background: var(--panel); z-index: 2; }
+.plan-add-bloque button, .plan-add-clase button { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.016em; text-transform: none; color: var(--acento); background: none; border: 1px dashed var(--acento); border-radius: var(--radio); padding: 8px 14px; width: 100%; }
+.plan-add-bloque button:hover, .plan-add-clase button:hover { background: rgba(72,157,163,0.08); }
+
+/* pie global */
+.plan-pie { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+.plan-leyenda { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-3); }
+.plan-chip-rep { width: 16px; height: 16px; border-radius: 4px; background: rgba(232,77,35,0.15); border: 1px solid var(--naranja); flex-shrink: 0; }
+
+@media (max-width: 640px) {
+  .plan-pie { flex-direction: column; align-items: stretch; }
+  .plan-pie .btn-primario { width: 100%; }
+}

@@ -1,2 +1,27 @@
+# El HTML nunca se cachea: siempre se revalida, así el próximo deploy llega
+# de inmediato (es liviano, ~28KB, así que revalidar seguido no cuesta nada).
 /*
-  Cache-Control: no-cache, no-store, must-revalidate
+  Cache-Control: no-cache, must-revalidate
+
+# app.<hash>.js y styles.<hash>.css cambian de nombre solos en cada build
+# (el hash es del contenido) — cache "para siempre" es seguro porque un
+# archivo con ese nombre exacto nunca va a cambiar de contenido.
+/assets/app.*.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/styles.*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# React/Firebase no cambian salvo que se actualice la versión a mano — igual
+# de seguro cachearlos largo.
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fuentes e imágenes no tienen hash en el nombre (los nombres son legibles:
+# cover-1.jpg, inter-latin.woff2, etc.). Cache largo igual porque cambian
+# poco, pero si algún día se reemplaza el CONTENIDO de un archivo con el
+# mismo nombre (ej: subir una portada nueva pisando cover-3.jpg), puede
+# tardar hasta un día en verse para alguien que ya lo tenía cacheado.
+/assets/images/*
+  Cache-Control: public, max-age=86400
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

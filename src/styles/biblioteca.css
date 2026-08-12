@@ -1,0 +1,202 @@
+/* ============================================================
+   DHARMA — Biblioteca de Ejercicios
+   ============================================================ */
+.ejb-familia { margin-bottom: 34px; }
+.ejb-familia-tit {
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  letter-spacing: 0.05em; text-transform: none; color: var(--acento);
+  padding-bottom: 8px; border-bottom: 2px solid var(--acento); margin-bottom: 18px;
+}
+.ejb-seccion { margin-bottom: 22px; }
+.ejb-seccion-cab { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.ejb-seccion-cab h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: 0.006em; text-transform: none; color: var(--ink); }
+.ejb-tag-niveles { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.025em; text-transform: none; color: var(--acento); background: rgba(72,157,163,0.1); padding: 3px 9px; border-radius: 999px; }
+.ejb-conteo { margin-left: auto; font-family: var(--font-display); font-weight: 700; font-size: 13px; color: var(--ink-3); background: var(--panel); border: 1px solid var(--linea); border-radius: 999px; min-width: 26px; text-align: center; padding: 2px 8px; }
+.ejb-vacio { font-size: 13.5px; color: var(--ink-3); font-style: italic; }
+
+.ejb-grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.ejb-card { background: var(--panel); border: 1px solid var(--linea); border-left: 3px solid var(--acento); border-radius: var(--radio); padding: 13px 15px; cursor: pointer; transition: border-color 0.12s, transform 0.12s, box-shadow 0.12s; }
+.ejb-card:hover { border-color: var(--negro); border-left-color: var(--acento); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.ejb-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.ejb-card-nombre { font-family: var(--font-display); font-weight: 600; font-size: 16px; letter-spacing: 0.01em; color: var(--ink); line-height: 1.15; }
+.ejb-play { flex-shrink: 0; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; background: var(--negro); color: #fff; border: none; border-radius: 50%; transition: background 0.12s; }
+.ejb-play:hover { background: var(--acento); }
+.ejb-card-nota { font-size: 13px; color: var(--ink-3); margin-top: 6px; line-height: 1.35; }
+.ejb-card-niveles { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.019em; text-transform: none; color: var(--acento); margin-top: 8px; }
+
+/* editor de niveles dentro del modal de ejercicio */
+.ejb-niveles-edit { border-top: 1px solid var(--linea); padding-top: 14px; }
+.ejb-niveles-cab { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.031em; text-transform: none; color: var(--ink-2); margin-bottom: 10px; }
+.ejb-niveles-filas { display: flex; flex-direction: column; gap: 8px; }
+.ejb-nivel-fila { display: flex; align-items: center; gap: 10px; }
+.ejb-nivel-lbl { flex-shrink: 0; width: 88px; font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.06em; color: var(--acento); }
+.ejb-nivel-fila input { flex: 1; font-family: var(--font-ui); font-size: 14px; color: var(--ink); background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); padding: 9px 11px; outline: none; }
+.ejb-nivel-fila input:focus { border-color: var(--acento); }
+
+/* video embed */
+.ejb-video { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: var(--radio); overflow: hidden; background: var(--negro); }
+.ejb-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.ejb-video-externo { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: var(--blanco); text-align: center; padding: 20px; }
+.ejb-video-externo p { margin: 0; font-size: 14px; color: rgba(247,248,250,0.75); }
+
+/* editor de secciones */
+.ejb-sec-editor { background: var(--panel); border: 1px solid var(--linea); border-radius: var(--radio); padding: 16px 18px; margin-bottom: 26px; }
+.ejb-sec-lista { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.ejb-sec-fila { display: flex; align-items: center; gap: 8px; }
+.ejb-sec-fila input { flex: 1; font-family: var(--font-ui); font-size: 14px; color: var(--ink); background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); padding: 8px 11px; outline: none; }
+.ejb-sec-fila input:focus { border-color: var(--acento); }
+.ejb-sec-fila select { font-family: var(--font-ui); font-size: 13px; border: 1px solid var(--linea); border-radius: var(--radio); padding: 8px; background: var(--blanco); }
+.ejb-sec-niv { background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); padding: 8px 12px; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; color: var(--ink-3); white-space: nowrap; }
+.ejb-sec-niv.on { background: var(--acento); border-color: var(--acento); color: #fff; }
+.ejb-sec-nueva { display: flex; gap: 8px; padding-top: 12px; border-top: 1px solid var(--linea); }
+.ejb-sec-nueva input { flex: 1; font-family: var(--font-ui); font-size: 14px; border: 1px solid var(--linea); border-radius: var(--radio); padding: 9px 11px; outline: none; }
+.ejb-sec-nueva input:focus { border-color: var(--acento); }
+.ejb-sec-nueva select { font-family: var(--font-ui); font-size: 13px; border: 1px solid var(--linea); border-radius: var(--radio); padding: 8px; background: var(--blanco); }
+
+@media (max-width: 760px) {
+  .ejb-grilla { grid-template-columns: 1fr 1fr; }
+  .ejb-sec-fila { flex-wrap: wrap; }
+}
+
+/* barra de filtro + toggle de vista */
+.ejb-barra { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.ejb-filtros { display: flex; gap: 8px; flex-wrap: wrap; }
+.ejb-chip { background: var(--panel); border: 1px solid var(--linea); border-radius: 999px; padding: 7px 15px; font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.03em; color: var(--ink-2); transition: border-color 0.12s, color 0.12s, background 0.12s; }
+.ejb-chip:hover { border-color: var(--negro); color: var(--ink); }
+.ejb-chip.on { background: var(--negro); border-color: var(--negro); color: var(--blanco); }
+.ejb-vista-toggle { display: inline-flex; border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
+.ejb-vista-toggle button { display: inline-flex; align-items: center; gap: 6px; background: var(--panel); border: none; padding: 8px 13px; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; color: var(--ink-3); }
+.ejb-vista-toggle button + button { border-left: 1px solid var(--linea); }
+.ejb-vista-toggle button.on { background: var(--negro); color: var(--blanco); }
+
+/* tabla tipo excel */
+.ejb-tabla { width: 100%; border-collapse: collapse; border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
+.ejb-tabla thead th { background: var(--negro); color: var(--blanco); font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.025em; text-transform: none; text-align: left; padding: 9px 13px; }
+.ejb-tabla thead th.ejb-th-acc { width: 44px; }
+.ejb-tabla thead th.ejb-th-nota { width: 45%; }
+.ejb-tabla tbody tr { border-top: 1px solid var(--linea); cursor: pointer; transition: background 0.1s; }
+.ejb-tabla tbody tr:nth-child(even) { background: var(--panel); }
+.ejb-tabla tbody tr:hover { background: rgba(72,157,163,0.08); }
+.ejb-tabla td { padding: 9px 13px; font-size: 14px; color: var(--ink); vertical-align: top; }
+.ejb-td-nom { font-family: var(--font-display); font-weight: 600; font-size: 15px; }
+.ejb-td-cue { display: block; font-family: var(--font-ui); font-weight: 400; font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.ejb-td-cue.solo { font-size: 13px; color: var(--ink-2); }
+.ejb-td-niv { font-size: 13.5px; color: var(--ink-2); }
+.ejb-td-vacio { color: var(--linea); }
+.ejb-td-acc { text-align: right; }
+.ejb-play.chico { width: 22px; height: 22px; }
+
+@media (max-width: 760px) {
+  .ejb-tabla { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+/* modales (base reutilizada por el editor de ejercicios y el selector de catálogo) */
+.mb-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 950; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.mb-modal { background: var(--blanco); border-radius: var(--radio); width: 560px; max-width: 100%; max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.mb-modal-cab { display: flex; justify-content: space-between; align-items: flex-start; padding: 22px 24px 16px; border-bottom: 1px solid var(--linea); }
+.mb-modal-eyebrow { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.044em; text-transform: none; color: var(--acento); }
+.mb-modal-cab h2 { font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 1; margin-top: 6px; text-transform: none; }
+.mb-modal-cuerpo { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+.mb-modal-pie { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px; border-top: 1px solid var(--linea); }
+
+/* selector de catálogo (desde el editor de bloques) */
+.btn-agregar-item.cat { border-style: solid; border-color: var(--negro); color: var(--ink); }
+.btn-agregar-item.cat:hover { background: var(--negro); color: var(--blanco); border-color: var(--negro); }
+.cat-pick-hint { font-size: 13px; color: var(--ink-3); line-height: 1.4; background: var(--panel); border-radius: var(--radio); padding: 10px 12px; }
+.cat-pick-lista { display: flex; flex-direction: column; gap: 14px; max-height: 52vh; overflow-y: auto; }
+.cat-pick-grupo { display: flex; flex-direction: column; gap: 4px; }
+.cat-pick-sec { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.037em; text-transform: none; color: var(--acento); margin-bottom: 4px; }
+.cat-pick-ej { display: flex; align-items: center; justify-content: space-between; gap: 10px; text-align: left; background: var(--panel); border: 1px solid var(--linea); border-radius: var(--radio); padding: 10px 13px; transition: border-color 0.12s, background 0.12s; }
+.cat-pick-ej:hover { border-color: var(--acento); background: var(--blanco); }
+.cat-pick-nom { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--ink); }
+.cat-pick-prog { font-family: var(--font-display); font-weight: 600; font-size: 10px; letter-spacing: 0.019em; text-transform: none; color: var(--acento); background: rgba(72,157,163,0.1); padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+
+/* plano + paso (técnica de carrera y taxonomía de fuerza) */
+.ejb-td-plano { display: inline-block; vertical-align: middle; margin-left: 8px; font-family: var(--font-display); font-weight: 700; font-size: 9.5px; letter-spacing: 0.025em; text-transform: none; color: var(--ink-3); border: 1px solid var(--linea); border-radius: 999px; padding: 1px 8px; }
+.ejb-td-paso { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-right: 9px; font-family: var(--font-display); font-weight: 700; font-size: 12px; color: #fff; background: var(--acento); border-radius: 50%; vertical-align: middle; }
+.ejb-card-plano { font-family: var(--font-display); font-weight: 700; font-size: 10px; letter-spacing: 0.019em; text-transform: none; color: var(--ink-3); margin-top: 7px; }
+
+/* vista planilla (Excel) */
+.ejx-wrap { border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
+.ejx-hint { font-size: 12.5px; color: var(--ink-3); background: var(--panel); padding: 9px 14px; border-bottom: 1px solid var(--linea); }
+.ejx-hint b { color: var(--ink-2); font-weight: 600; }
+.ejx-tabla { width: 100%; border-collapse: collapse; }
+.ejx-tabla thead th { background: var(--negro); color: var(--blanco); font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.025em; text-transform: none; text-align: left; padding: 8px 10px; }
+.ejx-h-drag { width: 30px; }
+.ejx-h-acc { width: 70px; }
+.ejx-fila { border-top: 1px solid var(--linea); }
+.ejx-fila:nth-child(even) { background: var(--panel); }
+.ejx-fila.over { box-shadow: inset 0 2px 0 var(--acento); }
+.ejx-fila.dragging { opacity: 0.45; }
+.ejx-tabla td { padding: 4px 8px; vertical-align: middle; }
+.ejx-drag { cursor: grab; color: var(--ink-3); font-size: 16px; text-align: center; user-select: none; }
+.ejx-drag:active { cursor: grabbing; }
+.ejx-sel, .ejx-nom { width: 100%; font-family: var(--font-ui); font-size: 13.5px; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: var(--radio); padding: 6px 7px; outline: none; }
+.ejx-nom { font-family: var(--font-display); font-weight: 600; font-size: 14.5px; }
+.ejx-sel:hover, .ejx-nom:hover { border-color: var(--linea); }
+.ejx-sel:focus, .ejx-nom:focus { border-color: var(--acento); background: var(--blanco); }
+.ejx-sel.chico { font-size: 12.5px; color: var(--ink-2); }
+.ejx-acc { text-align: right; }
+.ejx-abrir { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.019em; text-transform: none; color: var(--acento); background: none; border: 1px solid var(--acento); border-radius: var(--radio); padding: 4px 9px; white-space: nowrap; transition: background 0.12s, color 0.12s; }
+.ejx-abrir:hover { background: var(--acento); color: #fff; }
+@media (max-width: 760px) { .ejx-wrap { overflow-x: auto; } .ejx-tabla { min-width: 640px; } }
+
+/* ============================================================
+   Progresiones (método Jerónimo Milo)
+   ============================================================ */
+/* badges en lista/tarjeta */
+.ejb-td-progtag { display: inline-block; vertical-align: middle; margin-left: 8px; font-family: var(--font-display); font-weight: 700; font-size: 9.5px; letter-spacing: 0.031em; text-transform: none; color: var(--naranja); border: 1px solid var(--naranja); border-radius: 999px; padding: 1px 7px; }
+.ejb-tabla tbody tr.tiene-prog { cursor: pointer; }
+.ejb-tabla tbody tr.tiene-prog:hover { background: rgba(232,77,35,0.06); }
+.ejb-ver-prog { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.025em; text-transform: none; color: var(--naranja); background: none; border: 1px solid var(--naranja); border-radius: var(--radio); padding: 3px 9px; margin-right: 6px; transition: background 0.12s, color 0.12s; }
+.ejb-ver-prog:hover { background: var(--naranja); color: #fff; }
+.ejb-card.tiene-prog { border-left-color: var(--naranja); }
+.ejb-card.tiene-prog:hover { border-color: var(--naranja); border-left-color: var(--naranja); }
+.ejb-card-prog { font-family: var(--font-display); font-weight: 700; font-size: 10.5px; letter-spacing: 0.016em; text-transform: none; color: var(--naranja); margin-top: 9px; }
+
+/* ficha modal */
+.fp-modal { width: 680px; }
+.fp-cab { position: sticky; top: 0; background: var(--blanco); z-index: 2; }
+.fp-cuerpo { gap: 20px; padding-bottom: 26px; }
+
+.fp-como { background: var(--negro); color: var(--blanco); border-radius: var(--radio); padding: 16px 18px; }
+.fp-como-lbl { display: block; font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.05em; text-transform: none; color: var(--acento-claro); margin-bottom: 7px; }
+.fp-como p { margin: 0; font-size: 14px; line-height: 1.5; color: rgba(247,248,250,0.92); }
+
+.fp-bloque { border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
+.fp-bloque-cab { display: flex; align-items: baseline; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--linea); flex-wrap: wrap; }
+.fp-bloque-tit { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: 0.012em; text-transform: none; color: var(--ink); }
+.fp-bloque-sub { font-size: 11.5px; color: var(--ink-3); font-style: italic; }
+/* color por tipo de bloque */
+.fp-bloque.req .fp-bloque-cab { background: rgba(0,0,0,0.035); }
+.fp-bloque.req .fp-bloque-tit { color: var(--ink); }
+.fp-bloque.reg { border-color: rgba(72,157,163,0.5); }
+.fp-bloque.reg .fp-bloque-cab { background: rgba(72,157,163,0.08); }
+.fp-bloque.reg .fp-bloque-tit { color: var(--teal); }
+.fp-bloque.pro { border-color: rgba(232,77,35,0.45); }
+.fp-bloque.pro .fp-bloque-cab { background: rgba(232,77,35,0.07); }
+.fp-bloque.pro .fp-bloque-tit { color: var(--naranja); }
+.fp-bloque.var .fp-bloque-cab { background: var(--panel); }
+
+.fp-pasos { list-style: none; margin: 0; padding: 0; }
+.fp-paso { display: flex; gap: 13px; padding: 11px 16px; border-top: 1px solid var(--linea); }
+.fp-paso:first-child { border-top: none; }
+.fp-paso-marca { flex-shrink: 0; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--ink-3); background: var(--blanco); border: 1px solid var(--linea); border-radius: var(--radio); }
+.fp-pasos.num .fp-paso-marca { color: #fff; background: var(--negro); border-color: var(--negro); }
+.fp-bloque.reg .fp-pasos.num .fp-paso-marca { background: var(--teal); border-color: var(--teal); }
+.fp-bloque.pro .fp-pasos.num .fp-paso-marca { background: var(--naranja); border-color: var(--naranja); }
+.fp-paso-cuerpo { display: flex; flex-direction: column; gap: 2px; }
+.fp-paso-nom { font-family: var(--font-display); font-weight: 600; font-size: 15.5px; letter-spacing: 0.01em; color: var(--ink); }
+.fp-paso-desc { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.fp-paso.exp .fp-paso-marca { background: var(--naranja); border-color: var(--naranja); color: #fff; }
+.fp-exp { display: inline-block; vertical-align: middle; margin-left: 8px; font-family: var(--font-display); font-weight: 700; font-size: 9px; letter-spacing: 0.031em; text-transform: none; color: var(--naranja); border: 1px solid var(--naranja); border-radius: 999px; padding: 1px 6px; }
+
+.fp-nota { display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border-top: 1px solid var(--linea); background: rgba(72,157,163,0.05); font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+.fp-nota-lbl { flex-shrink: 0; font-family: var(--font-display); font-weight: 700; font-size: 10px; letter-spacing: 0.037em; text-transform: none; color: var(--acento); border: 1px solid var(--acento); border-radius: var(--radio); padding: 2px 7px; }
+
+.fp-fuente { font-size: 12px; color: var(--ink-3); text-align: center; padding-top: 4px; }
+.fp-fuente em { font-style: italic; }
+
+@media (max-width: 760px) {
+  .fp-modal { width: 100%; }
+}
