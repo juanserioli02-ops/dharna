@@ -3128,7 +3128,7 @@ button { font-family: inherit; cursor: pointer; }
 .pg-form { border: 1px solid var(--linea); border-radius: var(--radio); background: var(--panel); padding: 16px; margin-bottom: 18px; max-width: 640px; display: flex; flex-direction: column; gap: 10px; }
 .pg-form-fila { display: flex; gap: 10px; }
 .pg-form-o { font-size: 12px; color: var(--ink-3); text-align: center; width: 100%; }
-.pg-form-fila select, .pg-form-fila input { flex: 1; padding: 10px 12px; border: 1px solid var(--linea); border-radius: var(--radio); font-size: 14px; font-family: inherit; }
+.pg-form-fila select, .pg-form-fila input { flex: 1; min-width: 0; padding: 10px 12px; border: 1px solid var(--linea); border-radius: var(--radio); font-size: 14px; font-family: inherit; }
 .pg-form-acciones { display: flex; justify-content: flex-end; gap: 10px; }
 .pg-lista-prs { display: flex; flex-direction: column; max-width: 640px; border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
 .pg-pr-fila { display: grid; grid-template-columns: 1fr 100px 140px 90px; gap: 10px; align-items: center; padding: 11px 16px; font-size: 13px; border-top: 1px solid var(--linea); }
@@ -3503,7 +3503,7 @@ button { font-family: inherit; cursor: pointer; }
 .pg-pr-card .pg-pr-fecha { color: var(--ink-3); font-size: 12px; }
 .pg-pr-card .pg-pr-comentario { color: var(--ink-2); font-size: 12.5px; font-style: italic; margin-top: 2px; }
 .pg-form-fila-doble { display: flex; gap: 8px; }
-.pg-form-fila-doble input { flex: 1; }
+.pg-form-fila-doble input { flex: 1; min-width: 0; }
 .pg-form-series { display: flex; flex-direction: column; gap: 8px; padding: 10px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
 .pg-form-series-lbl { font-size: 12px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.03em; }
 .pg-form-serie { align-items: center; }

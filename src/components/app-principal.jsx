@@ -985,6 +985,11 @@ Object.assign(window, { BloqueLectura, AdminApp });
    PASSCODE — admin con clave maestra, coach con PIN individual
    ============================================================ */
 const CLAVE_ROL_SESION = "dharma-rol-sesion"; // sessionStorage: dura mientras la pestaña/app está abierta, pero se borra al cerrarla del todo — así un dispositivo compartido (tablet del centro, celular prestado) nunca queda abierto en la cuenta de otra persona después de cerrar
+// Excepción: el alumno en SU PROPIO celu (la PWA instalada) sí espera quedar logueado entre
+// aperturas, como cualquier app nativa — por eso su sesión además se guarda en localStorage
+// (persiste al cerrar del todo). admin/coach siguen solo en sessionStorage, sin este agregado,
+// porque a ellos sí les sirve la protección de "se cierra sola" en un dispositivo compartido.
+const CLAVE_ALUMNO_SESION = "dharma-alumno-sesion-v1";
 function PasscodePantalla({ onVolver, onOk, inicial }) {
   const [modo, setModo] = React.useState(() => {
     if (inicial === "coach") { const cs = (window.Coaches ? window.Coaches.cargar() : []).filter((c) => c.activo); return cs.length ? "coach" : "admin"; }
@@ -1061,11 +1066,28 @@ function PasscodePantalla({ onVolver, onOk, inicial }) {
    ============================================================ */
 function App() {
   const [rol, setRol] = React.useState(() => {
-    try { return JSON.parse(sessionStorage.getItem(CLAVE_ROL_SESION)); } catch (e) { return null; }
+    try {
+      const deSesion = JSON.parse(sessionStorage.getItem(CLAVE_ROL_SESION));
+      if (deSesion) return deSesion;
+    } catch (e) {}
+    // Nada en sessionStorage (pestaña/app nueva): si es un alumno que ya se había logueado
+    // antes en este mismo dispositivo, lo recuperamos de localStorage en vez de pedirle entrar de nuevo.
+    try {
+      const alumnoId = localStorage.getItem(CLAVE_ALUMNO_SESION);
+      if (alumnoId) return { alumnoId };
+    } catch (e) {}
+    return null;
   }); // null | "passcode" | "admin" | "coach" | {alumnoId}
   const fijarRolSesion = (r) => { setRol(r); try { sessionStorage.setItem(CLAVE_ROL_SESION, JSON.stringify(r)); } catch (e) {} };
-  const loguearAlumno = (id) => fijarRolSesion({ alumnoId: id });
-  const salir = () => { setRol(null); try { sessionStorage.removeItem(CLAVE_ROL_SESION); } catch (e) {} };
+  const loguearAlumno = (id) => {
+    fijarRolSesion({ alumnoId: id });
+    try { localStorage.setItem(CLAVE_ALUMNO_SESION, id); } catch (e) {}
+  };
+  const salir = () => {
+    setRol(null);
+    try { sessionStorage.removeItem(CLAVE_ROL_SESION); } catch (e) {}
+    try { localStorage.removeItem(CLAVE_ALUMNO_SESION); } catch (e) {}
+  };
   const [refreshKey, setRefreshKey] = React.useState(0);
   React.useEffect(() => {
     let pendiente = false;
